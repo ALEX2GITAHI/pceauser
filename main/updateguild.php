@@ -160,8 +160,8 @@ window.onload=startclock;
 			<ul class="breadcrumb">
 			<li><a href="index.php">Dashboard</a></li> /
             <li><a href="group.php">Group</a></li> /
-            <li><a href="youth.php">PCMF</a></li> /
-			<li class="active">Update PCMF Details</li>
+            <li><a href="youth.php">GUILD</a></li> /
+			<li class="active">Update GUILD Details</li>
 			</ul>
 
 
@@ -170,14 +170,14 @@ window.onload=startclock;
 <center><?php
 	include('../connect.php');
 	$id=$_SESSION['SESS_MEMBER_ID'];
-	$result = $db->prepare("SELECT * FROM youth WHERE username= :userid AND gender = 'female'");
+	$result = $db->prepare("SELECT * FROM membership WHERE username= :userid AND gender = 'female'");
 	$result->bindParam(':userid', $id);
 	$result->execute();
 	for($i=0; $row = $result->fetch(); $i++){
 ?>
 <link href="../style.css" media="screen" rel="stylesheet" type="text/css" />
 <form action="saveeditguild.php" method="post" enctype="multipart/form-data">
-<center><h4><i class="icon-edit icon-large"></i> Edit PCMF Details</h4></center>
+<center><h4><i class="icon-edit icon-large"></i> Edit Guild Details</h4></center>
 <hr>
 <div id="ac">
 <input type="hidden" name="memi" value="<?php echo $id; ?>" />
@@ -185,7 +185,7 @@ window.onload=startclock;
 <span>First Name : </span><input type="text" style="width:265px; height:30px;"  name="first_name" value="<?php echo $row['first_name']; ?>" /><br>
 <span>Middle Name : </span><input type="text" style="width:265px; height:30px;"  name="middle_name" value="<?php echo $row['middle_name']; ?>" /><br>
 <span>Last Name : </span><input type="text" style="width:265px; height:30px;"  name="last_name" value="<?php echo $row['last_name']; ?>" /><br>
-<span>Date Of Birth: </span><input type	="date" style="width:265px; height:30px;" name="date_of_birth" value="<?php echo $row['date_of_birth']; ?>" /><br>
+<span>Date Of Birth: </span><input type	="date" style="width:265px; height:30px;" name="date_of_birth" value="<?php echo $row['DOB']; ?>" /><br>
 <span>District Name </span><select name="district_name" style="width:265px; height:30px; margin-left:-5px;" >
 <option><?php echo $row['district_name']; ?></option>
 <option>WENDO</option>

@@ -210,7 +210,7 @@ window.onload=startclock;
 <span for="selectOption">Registered:</span>
 <select name="registered" style="width:265px; height:30px; margin-left:-5px;" id="selectOption" onchange="redirectToPage()" >
 <option value="">Select...</option>
-<option href="#colins" >NO</option>
+<option>NO</option>
 <option value="checkout.php">CARD</option>
 <option>BOTH CARD AND BADGE</option>
 <script>

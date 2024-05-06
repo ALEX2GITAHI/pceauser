@@ -233,12 +233,12 @@ window.onload=startclock;
 <?php
 			
 				include('../connect.php');
-				$resul = $db->prepare("SELECT status FROM youth ");
+				$resul = $db->prepare("SELECT registered FROM youth ");
 				$resul->execute();
 				$row = $resul->fetch();{
 			?>
 			<td> Youth Registration:  </td>
-			<td class="btn btn-success btn-mini"> <?php echo $row['status']; ?>
+			<td class="btn btn-success btn-mini"> <?php echo $row['registered']; ?>
 
             </td>
             <?php
