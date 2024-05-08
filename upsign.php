@@ -1,145 +1,221 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tailwind CSS Sign up Form with Image on Left Side Example</title>
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-  </head>
-  <style>
-    {
-        box-sizing: border-box;
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="stle.css">
+  <title>Document</title>
+  <script>
+    var ScrollMsg = "PCEA Mukinyi System - "
+    var CharacterPosition = 0;
+    function StartScrolling() {
+      document.title = ScrollMsg.substring(CharacterPosition, ScrollMsg.length) +
+        ScrollMsg.substring(0, CharacterPosition);
+      CharacterPosition++;
+      if (CharacterPosition > ScrollMsg.length) CharacterPosition = 0;
+      window.setTimeout("StartScrolling()", 150);
     }
-    /* Set additional styling options for the columns */
-    .column {
-    float: left;
-    }
+    StartScrolling();
+    // -->
+  </script>
+  <?php
+  //require_once('main/auth.php');
+  ?>
+  <link href="assets/pcealog.png" rel="shortcut icon">
+  <link rel="stylesheet" href="login.css">
+  <script src="logininfo.js"></script>
+</head>
 
-    /* Set width length for the left, right and middle columns */
-    .left {
-    width: 35%;
-    }
+<body>
+  <div class="imgcontainer">
+    <img src="main/IMAGES/logopcea.png" alt="Avatar" class="avatar" width="25px" height="120px">
+    <form action="main/savemember.php" method="post" enctype="multipart/form-data"> <br>
+      <div style="margin-top: -19px; margin-bottom: 21px;">
+        <center>
+          <h4><i class="icon-edit icon-large"></i>REGISTER</h4>
+        </center>
+        <hr>
+        <center>
+          <div id="ac">
+            <input type="hidden" name="memi" value="<?php echo $id; ?>" />
+            <span>First Name : </span><input type="text" style="width:265px; height:30px;" name="first_name"
+              Required /><br>
+            <span>Middle Name : </span><input type="text" style="width:265px; height:30px;" name="middle_name"
+              Required /><br>
+            <span>Last Name : </span><input type="text" style="width:265px; height:30px;" name="last_name"
+              Required /><br>
+            <span>MEMBERSHIP ID: </span><input type="text" style="width:265px; height:30px;"
+              value="MC20-<?php $prefix = md5(time() * rand(1, 2));
+              echo strip_tags(substr($prefix, 0, 4)); ?>"
+              name="membership_id" readonly Required /><br> <i><b>Make Sure You Remember your Membership ID</b></i> <br>
+            <span>Password : </span><input type="password" style="width:265px; height:30px;" id="pswd2" name="password1"
+              Required /><br>
+            <input type="checkbox" onclick="Shossword()" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+              title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">Show
+            Password <br>
+            <script>
+              function Shossword() {
+                var x = document.getElementById("pswd1");
+                var x = document.getElementById("pswd2");
+                if (x.type === "password") {
+                  x.type = "text";
+                } else {
+                  x.type = "password";
+                }
+              }
 
-    .middle {
-    width: 32%;
-    }
-    
-    .right {
-    width: 33%;
-}
-
-.row:after {
-content: "";
-display: table;
-clear: both;
-}
-</style>
-  <body>
-
-    <div class="flex items-center min-h-screen bg-gray-50">
-      <div class="flex-1 h-full max-w-4xl mx-auto bg-white rounded-lg shadow-xl">
-        <div class="flex flex-col md:flex-row">
-          <div class="h-32 md:h-auto md:w-1/2">
-            <img class="object-cover w-full h-full" src="https://source.unsplash.com/user/erondu/1600x900"
-              alt="img" />
+            </script>
           </div>
-          <div class="flex items-center justify-center p-6 sm:p-12 md:w-1/2">
-            <div class="w-full">
-              <div class="flex justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-20 h-20 text-blue-600" fill="none"
-                  viewBox="0 0 24 24" stroke="currentColor">
-                  <path d="M12 14l9-5-9-5-9 5 9 5z" />
-                  <path
-                    d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                    d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
-                </svg>
-              </div>
-              <h1 class="mb-4 text-2xl font-bold text-center text-gray-700">
-                Sign up
-              </h1>
-              <div class="row">
-              <div class="column left" style="background-color:#FFB695;">
-            <h2>Column 1</h2>
-            <p>Data..</p>
-              <div>
-                <label class="block text-sm">
-                First Name
-                </label>
-                <input type="text" name="first_name" Required 
-                  class="w-full px-4 py-2 text-sm border rounded-md focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-600"
-                  placeholder="Enter your First Name" />
-              </div>
-              <div>
-                <label class="block text-sm">
-                 MIddle Name
-                </label>
-                <input type="text" name="middle_name" Required 
-                  class="w-full px-4 py-2 text-sm border rounded-md focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-600"
-                  placeholder="Name" />
-              </div>
-              <div>
-                <label class="block text-sm">
-                  Last Name
-                </label>
-                <input type="text" name="last_name" Required 
-                  class="w-full px-4 py-2 text-sm border rounded-md focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-600"
-                  placeholder="Name" />
-              </div>
-              <div>
-                <label class="block text-sm">
-                  Name
-                </label>
-                <input type="text"
-                  class="w-full px-4 py-2 text-sm border rounded-md focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-600"
-                  placeholder="Name" />
-              </div>
-              <div>
-                <label class="block text-sm">
-                  Name
-                </label>
-                <input type="text"
-                  class="w-full px-4 py-2 text-sm border rounded-md focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-600"
-                  placeholder="Name" />
-              </div>
-              </div>
-              <div class="column middle" style="background-color:#96D1CD;">
-              <div class="mt-4">
-                <label class="block text-sm">
-                  Email
-                </label>
-                <input type="email"
-                  class="w-full px-4 py-2 text-sm border rounded-md focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-600"
-                  placeholder="Email Address" />
-              </div>
-              </div>
-              <div class="column right" style="background-color:#74C3E1;">
-              <div>
-                <label class="block mt-4 text-sm">
-                  Password
-                </label>
-                <input
-                  class="w-full px-4 py-2 text-sm border rounded-md focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-600"
-                  placeholder="Password" type="password" />
-              </div>
-              </div>
-              <button
-                class="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center text-white transition-colors duration-150 bg-blue-600 border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue"
-                href="#">
-                Sign up
-              </button>
-
-              <div class="mt-4 text-center">
-                <p class="text-sm">Don't have an account yet? <a href="#"
-                    class="text-blue-600 hover:underline"> Sign up.</a></p>
-              </div>
-            </div>
+          <div id="message">
+            <h3>Password must contain the following:</h3>
+            <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+            <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+            <p id="number" class="invalid">A <b>number</b></p>
+            <p id="length" class="invalid">Minimum <b>8 characters</b></p>
           </div>
-        </div>
+          <span> Confirm Password: </span><input type="password" style="width:265px; height:30px;" id="pswd1"
+            name="password2" Required /><br>
+          <span>Phone: </span><input type="text" style="width:265px; height:30px;" name="phone_number" required /><br>
+          <span>Gender: </span>
+          <select name="gender" style="width:265px; height:30px; margin-left:-5px;">
+            <option>Female</option>
+            <option>Male</option>
+          </select><br><br>
+          <span>D.O.B: </span><input type="date" style="width:265px; height:30px;" name="DOB" required /><br><br>
+          <span>District: </span>
+          <select name="district_name" id="district_name" style="width:265px; height:30px; margin-left:-5px;">
+            <option>WENDO</option>
+            <option>KIONEKI</option>
+            <option>WITIKIO</option>
+            <option>GIKENO</option>
+            <option>MUNYAKA</option>
+            <option>MWANGAZA</option>
+            <option>HIGHWAY</option>
+            <option>IMMANUEL</option>
+            <option>EBENEZER</option>
+            <option>BETHSAIDA</option>
+            <option>UTUGI</option>
+          </select><br><br>
+          <span>Passport:</span><input type="file" name="file" id="file" required><br>
+          <div>
+            <button class="btn btn-success btn-block btn-large" style="width:267px;"><i
+                class="icon icon-save icon-large" onclick="validateForm()"></i>Register</button>
+            Already having an account?
+            <a href="index.php">
+              Login Here!
+          </div>
       </div>
-    </div>
-  </body>
+    </form>
+    </center>
+  </div>
+  <div id="message">
+    <h3>Password must contain the following:</h3>
+    <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
+    <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
+    <p id="number" class="invalid">A <b>number</b></p>
+    <p id="length" class="invalid">Minimum <b>8 characters</b></p>
+  </div>
+  <script>
+    var myInput = document.getElementById("pswd2");
+    var letter = document.getElementById("letter");
+    var capital = document.getElementById("capital");
+    var number = document.getElementById("number");
+    var length = document.getElementById("length");
+
+    // When the user clicks on the password field, show the message box
+    myInput.onfocus = function () {
+      document.getElementById("message").style.display = "block";
+    }
+
+    // When the user clicks outside of the password field, hide the message box
+    myInput.onblur = function () {
+      document.getElementById("message").style.display = "none";
+    }
+
+    // When the user starts to type something inside the password field
+    myInput.onkeyup = function () {
+      // Validate lowercase letters
+      var lowerCaseLetters = /[a-z]/g;
+      if (myInput.value.match(lowerCaseLetters)) {
+        letter.classList.remove("invalid");
+        letter.classList.add("valid");
+      } else {
+        letter.classList.remove("valid");
+        letter.classList.add("invalid");
+      }
+
+      // Validate capital letters
+      var upperCaseLetters = /[A-Z]/g;
+      if (myInput.value.match(upperCaseLetters)) {
+        capital.classList.remove("invalid");
+        capital.classList.add("valid");
+      } else {
+        capital.classList.remove("valid");
+        capital.classList.add("invalid");
+      }
+
+      // Validate numbers
+      var numbers = /[0-9]/g;
+      if (myInput.value.match(numbers)) {
+        number.classList.remove("invalid");
+        number.classList.add("valid");
+      } else {
+        number.classList.remove("valid");
+        number.classList.add("invalid");
+      }
+
+      // Validate length
+      if (myInput.value.length >= 8) {
+        length.classList.remove("invalid");
+        length.classList.add("valid");
+      } else {
+        length.classList.remove("valid");
+        length.classList.add("invalid");
+      }
+    }
+  </script>
+  <style>
+    /* Style all input fields */
+
+    /* The message box is shown when the user clicks on the password field */
+    #message {
+      display: none;
+      background: #f1f1f1;
+      color: #000;
+      position: relative;
+      padding: 20px;
+      margin-top: 10px;
+    }
+
+    #message p {
+      padding: 10px 35px;
+      font-size: 18px;
+    }
+
+    /* Add a green text color and a checkmark when the requirements are right */
+    .valid {
+      color: green;
+    }
+
+    .valid:before {
+      position: relative;
+      left: -35px;
+      content: "✔";
+    }
+
+    /* Add a red text color and an "x" when the requirements are wrong */
+    .invalid {
+      color: red;
+    }
+
+    .invalid:before {
+      position: relative;
+      left: -35px;
+      content: "✖";
+    }
+  </style>
+</body>
 
 </html>
