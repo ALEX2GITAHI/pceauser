@@ -1,28 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link href="assets/pcealog.png" rel="shortcut icon">
+  <title></title>
+
+  <script>
+    var ScrollMsg = "PCEA Mukinyi System - "
+    var CharacterPosition = 0;
+    function StartScrolling() {
+      document.title = ScrollMsg.substring(CharacterPosition, ScrollMsg.length) +
+        ScrollMsg.substring(0, CharacterPosition);
+      CharacterPosition++;
+      if (CharacterPosition > ScrollMsg.length) CharacterPosition = 0;
+      window.setTimeout("StartScrolling()", 150);
+    }
+    StartScrolling();
+    // -->
+  </script>
+  <link href="main/IMAGES/pcealog.png" rel="shortcut icon">
   <link rel="stylesheet" href="login.css">
   <script src="logininfo.js"></script>
 </head>
-
 <body>
   <div class="container">
-    <div class="image-column">
-      <div class="image">
-      <img src="main/img/pexels-jonathanborba-2917381.jpg" style="max-width: 200%; max-height: 100vh; height: auto;">
-      </div>
-    </div>
-    <div class="form-column">
+    <div class="signup-form-container">
       <div class="signup-form">
         <form action="main/savemember.php" method="post" enctype="multipart/form-data">
-          <h4>REGISTER</h4>
-          <hr>
+          <h4>REGISTER</h4>  
           <div id="ac">
             <input type="hidden" name="memi" value="<?php echo $id; ?>" />
             <span>First Name : </span><input type="text" name="first_name" required><br>
@@ -31,7 +37,7 @@
             <span>MEMBERSHIP ID: </span><input type="text" value="MC20-<?php $prefix = md5(time() * rand(1, 2));
             echo strip_tags(substr($prefix, 0, 4)); ?>" name="membership_id" readonly required><br>
             <i><b>Make Sure You Remember your Membership ID</b></i> <br>
-            <span>Password : </span><input type="password" id="pswd2" name="password1" required><br>
+            <span>Password : </span><input type="password" id="pswd2" name="password1" required>
           </div>
           <!-- Modal -->
           <div id="myModal" class="modal">
@@ -47,10 +53,9 @@
               </div>
             </div>
           </div>
-          
           <input type="checkbox" onclick="ShowPassword()" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
             title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters">Show
-          Password <br>
+          Password <br><br>
           <span>Confirm Password: </span><input type="password" id="pswd1" name="password2" required><br>
           <span>Phone: </span><input type="text" name="phone_number" required><br>
           <span>Gender: </span>
@@ -73,8 +78,8 @@
             <option>BETHSAIDA</option>
             <option>UTUGI</option>
           </select><br><br>
-          <span>Passport:</span><input type="file" name="file" id="file" required><br><br>
-          <button class="btn btn-success btn-large" onclick="validateForm()">Register</button> <br>
+          <span>Passport:</span><input type="file" name="file" id="file" required><br>
+          <button class="btn btn-success btn-large" onclick="validateForm()">Register</button> <br><br>
           Already having an account? <a href="index.php">Login Here!</a>
         </form>
       </div>
@@ -92,17 +97,17 @@
     var span = document.getElementsByClassName("close")[0];
 
     // When the user starts typing in the password field, open the modal
-    passwordInput.onkeyup = function() {
+    passwordInput.onkeyup = function () {
       modal.style.display = "block";
     }
 
     // When the user clicks on <span> (x), close the modal
-    span.onclick = function() {
+    span.onclick = function () {
       modal.style.display = "none";
     }
 
     // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
+    window.onclick = function (event) {
       if (event.target == modal) {
         modal.style.display = "none";
       }
@@ -114,15 +119,15 @@
     var number = document.getElementById("number");
     var length = document.getElementById("length");
 
-    myInput.onfocus = function() {
+    myInput.onfocus = function () {
       modal.style.display = "block";
     }
 
-    myInput.onblur = function() {
+    myInput.onblur = function () {
       modal.style.display = "none";
     }
 
-    myInput.onkeyup = function() {
+    myInput.onkeyup = function () {
       var lowerCaseLetters = /[a-z]/g;
       if (myInput.value.match(lowerCaseLetters)) {
         letter.classList.remove("invalid");
@@ -159,61 +164,5 @@
       }
     }
   </script>
-
-  <style>
-    /* Modal styles */
-    .modal {
-      display: none; /* Hidden by default */
-      position: fixed; /* Stay in place */
-      z-index: 1; /* Sit on top */
-      left: 0;
-      top: 0;
-      width: 100%; /* Full width */
-      height: 100%; /* Full height */
-      overflow: auto; /* Enable scroll if needed */
-      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    }
-
-    .modal-content {
-      background-color: #f4f4f4;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      padding: 20px;
-      width: 300px;
-      margin: 0 auto;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .close {
-      color: #aaa;
-      float: right;
-      font-size: 28px;
-      font-weight: bold;
-    }
-
-    .close:hover,
-    .close:focus {
-      color: black;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    #message h3 {
-      color: #333;
-    }
-
-    #message p {
-      margin: 10px 0;
-    }
-
-    .invalid {
-      color: red;
-    }
-
-    .valid {
-      color: green;
-    }
-  </style>
 </body>
-
 </html>

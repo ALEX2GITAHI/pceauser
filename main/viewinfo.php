@@ -3,7 +3,6 @@
 <title>
 Mukinyi Membership System
 </title>
-
 <?php 
 require_once('auth.php');
 ?>

@@ -5,9 +5,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
   <title></title>
-
   <script>
     var ScrollMsg = "PCEA Mukinyi System - "
     var CharacterPosition = 0;
@@ -21,7 +19,6 @@
     StartScrolling();
     // -->
   </script>
-
   <link href="assets/must.png" rel="shortcut icon">
   <link href="main/IMAGES/pcealog.png" rel="shortcut icon">
   <link rel="stylesheet" href="stle.css">

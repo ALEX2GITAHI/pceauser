@@ -3,7 +3,6 @@
 <title>
 Mukinyi Membership System
 </title>
-
 <?php 
 require_once('auth.php');
 ?>
@@ -94,9 +93,7 @@ function sum() {
 			
         }
 </script>
-
-
- <script language="javascript" type="text/javascript">
+<script language="javascript" type="text/javascript">
 /* Visit http://www.yaldex.com/ for full source code
 and get more free JavaScript, CSS and DHTML scripts! */
 <!-- Begin
